@@ -17,19 +17,19 @@ function TopBar() {
             <div className="topcenter">
                 <ul className="toplist">
                     <li className="toplistitem">
-                        <Link className="link" to="/">Home</Link>
+                        <Link className="link" to="/">HOME</Link>
                     </li>
                     <li className="toplistitem">
-                        <Link className="link" to="/about">About</Link>
+                        <Link className="link" to="/">ABOUT</Link>
                     </li>
                     <li className="toplistitem">
-                        <Link className="link" to="/contact">Contact</Link>
+                        <Link className="link" to="/">CONTACT</Link>
                     </li>
                     <li className="toplistitem">
-                        <Link className="link" to="/write">Write</Link>
+                        <Link className="link" to="/write">WRITE</Link>
                     </li>
                     <li className="toplistitem">
-                        {user && "Logout"}
+                        {user && "LOGOUT"}
                     </li>
                 </ul>
             </div>

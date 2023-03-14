@@ -19,6 +19,9 @@ function App() {
     <Router>
       <TopBar />
       <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path="/register">
             {user ? <Home /> : <Register />}
             <Register />
@@ -37,9 +40,6 @@ function App() {
           </Route>
           <Route path="/post/:postId">
             <Single />
-          </Route>
-          <Route exact path="/">
-            <Home />
           </Route>
       </Switch>
     </Router>
