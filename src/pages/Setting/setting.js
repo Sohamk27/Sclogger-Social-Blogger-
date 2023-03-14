@@ -1,6 +1,7 @@
 import React from 'react'
 import './setting.css'
 import Sidebar from '../../Components/Sidebar/sidebar'
+import img7 from '../../Images/img7.jpg'
 
 function setting() {
   return (
@@ -14,7 +15,7 @@ function setting() {
           <label>Profile Picture</label>
           <div className="settingpp">
             <img
-              src="../../Images/img7.jpg"
+              src={img7}
               alt=""
               className="settingimg"
             />

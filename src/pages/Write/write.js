@@ -1,12 +1,13 @@
 import React from 'react'
 import './write.css'
+import img6 from '../../Images/img6.jpg'
 
 function write() {
   return (
     <div className="write">
         <img 
             className="writeimg" 
-            src="../../Images/img6.jpg" 
+            src={img6} 
             alt="" 
         />
       <form className="writeform">

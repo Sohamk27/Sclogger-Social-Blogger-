@@ -1,12 +1,13 @@
 import React from 'react'
 import './post.css'
+import img4 from '../../Images/img4.jpg'
 
 function post() {
   return (
     <div className="post">
         <img
             className="postimg"
-            src="../../Images/img4.jpg"
+            src={img4}
             alt="img4"
         />
         <div className="postinfo">

@@ -1,12 +1,13 @@
 import React from 'react'
 import './singlepost.css'
+import img5 from '../../Images/img5.jpg'
 
 function singlepost() {
   return (
     <div className="singlepost">
       <div className="singlepostwrapper">
         <img
-            src="../../Images/img5"
+            src={img5}
             alt=""
             className="singlepostimg"
         />

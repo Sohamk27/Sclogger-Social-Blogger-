@@ -1,5 +1,6 @@
 import React from 'react'
 import './sidebar.css'
+import img3 from '../../Images/img3.jpg'
 
 function sidebar() {
   return (
@@ -8,7 +9,7 @@ function sidebar() {
             <span className="sidebartitle">ABOUT ME</span>
             <img
                 className="sidebarimg"
-                src="../../Images/img3.jpg"
+                src={img3}
                 alt=""
             />
             <p>Lorem njdhcjshciwhckw dhwchwic hwqihiwjciwq chiw qciw hwi  
