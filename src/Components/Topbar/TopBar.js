@@ -4,7 +4,7 @@ import "./TopBar.css"
 import Userimg from "../../Images/img1.jpg"
 
 function TopBar() {
-    const user = false;
+    const user = true;
     return (
         <div className="top">
             <div className="topleft">
@@ -36,11 +36,13 @@ function TopBar() {
             <div className="topright">
                 {
                     user ? (
-                        <img 
-                            className="topimg" 
-                            src={Userimg}
-                            alt="" 
-                        />
+                        <Link classname="link" to="/setting">
+                            <img 
+                                className="topimg" 
+                                src={Userimg}
+                                alt="" 
+                            />
+                        </Link>
                     ) : (
                         <ul className="toplist">
                             <li className="toplistitem">
