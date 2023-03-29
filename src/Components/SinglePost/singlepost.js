@@ -1,58 +1,59 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {useLocation} from 'react-router-dom'
 import './singlepost.css'
 import img5 from '../../Images/img5.jpg'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-function singlepost() {
+function Singlepost() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  console.log(path);
+
+  const [post, setPost] = useState({});
+
+
+  useEffect(() => {
+    const getpost = async () => {
+      const res = await axios.get("/posts/" + path);
+      console.log(res.data)
+      setPost(res.data);
+    }
+    getpost();
+  }, [path])
+
   return (
     <div className="singlepost">
       <div className="singlepostwrapper">
-        <img
-            src={img5}
-            alt=""
-            className="singlepostimg"
-        />
+        {post.photo && (
+          <img
+              src={post.photo}
+              alt=""
+              className="singlepostimg"
+          />
+        )}
         <h1 className="singleposttitle">
-            Lorem ipsum dolor sit amet.
+            {post.title}
             <div className="singlepostedit">
                 <i class="singleposticon fa-solid fa-pen-to-square"></i>
                 <i class="singleposticon fa-solid fa-trash"></i>
             </div>
         </h1>
         <div className="singlepostinfo">
-            <span className="singlepostauthor">Author: <b>Soham</b></span>
-            <span className="singlepostdate">1 hour ago</span>
+            <span className="singlepostauthor">
+            Author: 
+              <Link to={`/?user=${post.username}`} className='link' >
+                <b>{post.username}</b>
+              </Link>
+            </span>
+            <span className="singlepostdate">{new Date(post.createdAt).toDateString()} </span>
         </div>
         <p className="singlepostdesc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quisquam, voluptate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quisquam, voluptate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Quisquam, voluptate. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptate. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quisquam, voluptate. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quisquam, voluptate. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptate. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quisquam, voluptate. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quisquam, voluptate. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quisquam,
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quisquam, voluptate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quisquam, voluptate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Quisquam, voluptate. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptate. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quisquam, voluptate. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quisquam, voluptate. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptate. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quisquam, voluptate. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Quisquam, voluptate. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quisquam,
+            {post.description}
         </p>
       </div>
     </div>
   )
 }
 
-export default singlepost
+export default Singlepost

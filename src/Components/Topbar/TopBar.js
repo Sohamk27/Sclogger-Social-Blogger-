@@ -4,7 +4,7 @@ import "./TopBar.css"
 import Userimg from "../../Images/img1.jpg"
 
 function TopBar() {
-    const user = true;
+    const user = false;
     return (
         <div className="top">
             <div className="topleft">

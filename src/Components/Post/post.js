@@ -1,43 +1,32 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './post.css'
 import img4 from '../../Images/img4.jpg'
 
-function post() {
+function post({post}) {
   return (
     <div className="post">
-        <img
-            className="postimg"
-            src={img4}
-            alt="img4"
-        />
+        {post.photo && (
+            <img
+                className="postimg"
+                src={post.photo}
+                alt="img4"
+            />
+        )}
         <div className="postinfo">
             <div className="postcats">
-                <span className="postcat">Music</span>
-                <span className="postcat">Life</span>
+                {post.categories.map((c) => (
+                    <span className="postcat">{c.name}</span>
+                ))}
             </div>
-            <span className="posttitle">Lorem ipsum dolor sit amet</span>
+            <Link to={`/post/${post._id}`} className="link">
+                <span className="posttitle">{post.title}</span>
+            </Link>
             <hr/>
-            <span className="postdate">1 hour ago</span>
+            <span className="postdate">{new Date(post.createdAt).toDateString()}</span>
         </div>
         <p className="postdesc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nullam auctor, nisl eget ultricies tincidunt, nunc nisl
-            lacinia nisl, vitae aliquam nisl nunc vel mauris. Sed
-            tincidunt, nisl eget ultricies tincidunt, nunc nisl lacini
-            a nisl, vitae aliquam nisl nunc vel mauris. Sed tincidunt,
-            nisl eget ultricies tincidunt, nunc nisl lacinia nisl, vitae
-            aliquam nisl nunc vel mauris. Sed tincidunt, nisl eget
-            ultricies tincidunt, nunc nisl lacinia nisl, vitae aliquam
-            nisl nunc vel mauris. Sed tincidunt, nisl eget ultricies
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nullam auctor, nisl eget ultricies tincidunt, nunc nisl
-            lacinia nisl, vitae aliquam nisl nunc vel mauris. Sed
-            tincidunt, nisl eget ultricies tincidunt, nunc nisl lacini
-            a nisl, vitae aliquam nisl nunc vel mauris. Sed tincidunt,
-            nisl eget ultricies tincidunt, nunc nisl lacinia nisl, vitae
-            aliquam nisl nunc vel mauris. Sed tincidunt, nisl eget
-            ultricies tincidunt, nunc nisl lacinia nisl, vitae aliquam
-            nisl nunc vel mauris. Sed tincidunt, nisl eget ultricies
+            {post.description}
         </p>
     </div>
   )
