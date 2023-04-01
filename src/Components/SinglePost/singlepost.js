@@ -1,43 +1,60 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {useLocation} from 'react-router-dom'
 import './singlepost.css'
 import img5 from '../../Images/img5.jpg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Context } from '../../context/Context'
+
 
 function Singlepost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
-
+  // console.log(path);
   const [post, setPost] = useState({});
+  const PF = "http://localhost:5000/Images/";
+  const {user} = useContext(Context);
 
 
   useEffect(() => {
     const getpost = async () => {
       const res = await axios.get("/posts/" + path);
-      console.log(res.data)
+      // console.log(res.data)
       setPost(res.data);
     }
     getpost();
   }, [path])
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/posts/${post._id}`,{
+        data:{username: user.username}
+      });
+      window.location.replace("/");
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className="singlepost">
       <div className="singlepostwrapper">
         {post.photo && (
           <img
-              src={post.photo}
+              src={PF + post.photo}
               alt=""
               className="singlepostimg"
           />
         )}
         <h1 className="singleposttitle">
             {post.title}
-            <div className="singlepostedit">
-                <i class="singleposticon fa-solid fa-pen-to-square"></i>
-                <i class="singleposticon fa-solid fa-trash"></i>
-            </div>
+            {post.username === user?.username && 
+              <div className="singlepostedit">
+                  <i class="singleposticon fa-solid fa-pen-to-square"></i>
+                  <i class="singleposticon fa-solid fa-trash" onClick={handleDelete} ></i>
+              </div>
+            }
         </h1>
         <div className="singlepostinfo">
             <span className="singlepostauthor">

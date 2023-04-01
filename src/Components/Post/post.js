@@ -4,12 +4,13 @@ import './post.css'
 import img4 from '../../Images/img4.jpg'
 
 function post({post}) {
+    const PF = "http://localhost:5000/Images/";
   return (
     <div className="post">
         {post.photo && (
             <img
                 className="postimg"
-                src={post.photo}
+                src={PF + post.photo}
                 alt="img4"
             />
         )}

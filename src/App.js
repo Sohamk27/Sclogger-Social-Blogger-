@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import TopBar from './Components/Topbar/TopBar';
 import Home from './pages/Home/home';
 import Single from './pages/Single/single';
@@ -6,6 +6,7 @@ import Write from './pages/Write/write'
 import Setting from './pages/Setting/setting';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
+import {Context} from './context/Context';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +15,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const user = false;
+  const {user} = useContext(Context);
   return (
     <Router>
       <TopBar />
