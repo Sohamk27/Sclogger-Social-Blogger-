@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import {useLocation} from 'react-router-dom'
 import './singlepost.css'
-import img5 from '../../Images/img5.jpg'
+// import img5 from '../../Images/img5.jpg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Context } from '../../context/Context'
